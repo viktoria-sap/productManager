@@ -76,4 +76,26 @@ class ManagerTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSearchByNameProduct() {
+        Product product = new Product();
+
+        product.setName("iPhone");
+
+        String search = "а.чехов";
+
+        assertEquals(false, product.matches(search));
+    }
+
+    @Test
+    public void shouldSearchByNameProduct1() {
+        Product product = new Product();
+
+        product.setName("iPhone");
+
+        String search = "iphone";
+
+        assertEquals(true, product.matches(search));
+    }
+
 }

@@ -7,6 +7,13 @@ public class Product {
     private String name;
     private int price;
 
+    public boolean matches(String search){
+        if (getName().equalsIgnoreCase(search)) {
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
