@@ -1,0 +1,78 @@
+package ru.netology.manager;
+
+import ru.netology.domain.Book;
+import ru.netology.domain.Product;
+import ru.netology.domain.Smartphone;
+import ru.netology.repository.ProductRepository;
+
+public class Manager {
+
+    private ProductRepository repository;
+
+    public Manager(ProductRepository repository) {
+        this.repository = repository;
+    }
+
+    private Product[] items = new Product[0];
+
+    public void add(Product item) {
+        repository.save(item);
+    }
+
+    public Product[] searchBy(String search) {
+        Product[] result = new Product[0];
+        for (Product product: repository.findAll()) {
+            if (matchesBook(product, search)) {
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(items, 0, tmp, 0, items.length);
+                tmp[tmp.length - 1] = product;
+                result = tmp;
+            }
+
+            if (matchesSmartphone(product, search)) {
+                Product[] tmp = new Product[result.length + 1];
+                System.arraycopy(items, 0, tmp, 0, items.length);
+                tmp[tmp.length - 1] = product;
+                result = tmp;
+            }
+
+        }
+        return result;
+    }
+
+
+    public boolean matchesBook(Product product, String search) {
+        if (product instanceof Book) {
+            Book book = (Book) product;
+            if (book.getName().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (book.getAuthor().equalsIgnoreCase(search)) {
+                return true;
+            }
+        }
+            return false;
+    }
+
+    public boolean matchesSmartphone(Product product, String search) {
+        if (product instanceof Smartphone) {
+            Smartphone smartphone = (Smartphone) product;
+            if (smartphone.getName().equalsIgnoreCase(search)) {
+                return true;
+            }
+            if (smartphone.getManufacturer().equalsIgnoreCase(search)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void removeById(int id) {
+        repository.removeById(id);
+    }
+
+    public void findById(int id) {
+        repository.findById(id);
+    }
+
+}
