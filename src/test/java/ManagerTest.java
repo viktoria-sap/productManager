@@ -76,4 +76,19 @@ class ManagerTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSearchByItem() {
+
+        manager.add(product1);
+        manager.add(product2);
+        manager.add(product3);
+        manager.add(product4);
+
+        String search = "холодильник";
+
+        Product[] actual = manager.searchBy(search);
+        Product[] expected = new Product[]{};
+        assertArrayEquals(expected, actual);
+    }
+
 }
