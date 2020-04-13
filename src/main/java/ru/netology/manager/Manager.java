@@ -9,10 +9,6 @@ public class Manager {
 
     private Product[] items = new Product[0];
 
-    public Manager() {
-
-    }
-
     private ProductRepository repository;
 
     public Manager(ProductRepository repository) {

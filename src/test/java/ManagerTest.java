@@ -4,12 +4,14 @@ import ru.netology.domain.Book;
 import ru.netology.domain.Product;
 import ru.netology.domain.Smartphone;
 import ru.netology.manager.Manager;
+import ru.netology.repository.ProductRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ManagerTest {
 
-    private Manager manager = new Manager();
+    private ProductRepository repository = new ProductRepository();
+    private Manager manager = new Manager(repository);
 
     Product product1 = new Book(1, "Толстый и тонкий", 200, "А.Чехов");
     Product product2 = new Smartphone(2, "G8S ThinQ", 37000, "LG");
