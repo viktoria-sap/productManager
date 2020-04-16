@@ -17,6 +17,7 @@ class ManagerTest {
     Product product2 = new Smartphone(2, "G8S ThinQ", 37000, "LG");
     Product product3 = new Book(3, "Анна Каренина", 150, "Л.Толстой");
     Product product4 = new Smartphone(4, "iPhone", 40000, "Apple");
+    Product product5 = new Product(5, "Pineapple", 50);
 
     @Test
     public void shouldSearchByNameBook() {
@@ -25,6 +26,7 @@ class ManagerTest {
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
+        manager.add(product5);
 
         String search = "анна каренина";
 
@@ -40,6 +42,7 @@ class ManagerTest {
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
+        manager.add(product5);
 
         String search = "iphone";
 
@@ -55,6 +58,7 @@ class ManagerTest {
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
+        manager.add(product5);
 
         String search = "lg";
 
@@ -70,6 +74,7 @@ class ManagerTest {
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
+        manager.add(product5);
 
         String search = "а.чехов";
 
@@ -85,11 +90,12 @@ class ManagerTest {
         manager.add(product2);
         manager.add(product3);
         manager.add(product4);
+        manager.add(product5);
 
-        String search = "холодильник";
+        String search = "pineapple";
 
         Product[] actual = manager.searchBy(search);
-        Product[] expected = new Product[]{};
+        Product[] expected = new Product[]{product5};
         assertArrayEquals(expected, actual);
     }
 
