@@ -22,11 +22,11 @@ class ManagerTest {
     @Test
     public void shouldSearchByNameBook() {
 
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
-        manager.add(product5);
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product3);
+        repository.save(product4);
+        repository.save(product5);
 
         String search = "анна каренина";
 
@@ -36,13 +36,29 @@ class ManagerTest {
     }
 
     @Test
+    public void shouldSearchByNameBookIfNotExist() {
+
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product3);
+        repository.save(product4);
+        repository.save(product5);
+
+        String search = "преступление и наказание";
+
+        Product[] actual = manager.searchBy(search);
+        Product[] expected = new Product[]{};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSearchByNameSmart() {
 
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
-        manager.add(product5);
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product3);
+        repository.save(product4);
+        repository.save(product5);
 
         String search = "iphone";
 
@@ -54,11 +70,11 @@ class ManagerTest {
     @Test
     public void shouldSearchByManufacturerSmart() {
 
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
-        manager.add(product5);
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product3);
+        repository.save(product4);
+        repository.save(product5);
 
         String search = "lg";
 
@@ -70,11 +86,11 @@ class ManagerTest {
     @Test
     public void shouldSearchByAuthorBook() {
 
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
-        manager.add(product5);
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product3);
+        repository.save(product4);
+        repository.save(product5);
 
         String search = "а.чехов";
 
@@ -86,11 +102,11 @@ class ManagerTest {
     @Test
     public void shouldSearchByItem() {
 
-        manager.add(product1);
-        manager.add(product2);
-        manager.add(product3);
-        manager.add(product4);
-        manager.add(product5);
+        repository.save(product1);
+        repository.save(product2);
+        repository.save(product4);
+        repository.save(product5);
+        repository.save(product3);
 
         String search = "pineapple";
 

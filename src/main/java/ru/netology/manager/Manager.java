@@ -15,10 +15,6 @@ public class Manager {
         this.repository = repository;
     }
 
-    public void add(Product item) {
-        repository.save(item);
-    }
-
     public Product[] searchBy(String search) {
         Product[] result = new Product[0];
         for (Product product: repository.findAll()) {
@@ -52,14 +48,7 @@ public class Manager {
         return false;
     }
     public boolean matchesProduct(Product product, String search) {
-            if (product.getName().equalsIgnoreCase(search)) {
-                return true;
-            }
-        return false;
-    }
-
-    public void findAll() {
-        repository.findAll();
+        return product.getName().equalsIgnoreCase(search);
     }
 
 }
