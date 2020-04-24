@@ -7,8 +7,6 @@ import ru.netology.repository.ProductRepository;
 
 public class Manager {
 
-    private Product[] items = new Product[0];
-
     private ProductRepository repository;
 
     public Manager(ProductRepository repository) {
